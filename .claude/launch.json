@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "web",
+      "runtimeExecutable": "dotnet",
+      "runtimeArgs": ["run", "--project", "PracticaPro2G5/PracticaPro2G5.csproj", "--urls", "http://localhost:5082", "--no-launch-profile"],
+      "port": 5082
+    }
+  ]
+}

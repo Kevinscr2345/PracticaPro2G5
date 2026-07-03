@@ -3,6 +3,11 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/main/VisualStudio.gitignore
 
+# Base de datos SQLite (se genera automáticamente por migraciones al iniciar la app)
+*.db
+*.db-shm
+*.db-wal
+
 # User-specific files
 *.rsuser
 *.suo

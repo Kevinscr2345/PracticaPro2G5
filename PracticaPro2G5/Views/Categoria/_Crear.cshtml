@@ -1,0 +1,31 @@
+@model CategoriaDto
+
+<div class="modal fade" id="modalCrearCategoria" tabindex="-1" aria-labelledby="tituloCrearCategoria" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form id="formCrearCategoria">
+                @Html.AntiForgeryToken()
+                <div class="modal-header">
+                    <h5 class="modal-title" id="tituloCrearCategoria">Nueva categoría</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label asp-for="Nombre" class="form-label"></label>
+                        <input asp-for="Nombre" class="form-control" />
+                        <span asp-validation-for="Nombre" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="Descripcion" class="form-label"></label>
+                        <textarea asp-for="Descripcion" class="form-control" rows="3"></textarea>
+                        <span asp-validation-for="Descripcion" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

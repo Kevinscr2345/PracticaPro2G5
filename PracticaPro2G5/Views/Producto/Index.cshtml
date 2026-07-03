@@ -1,0 +1,36 @@
+@{
+    ViewData["Title"] = "Productos";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h1 class="h3 mb-0">Productos médicos</h1>
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalCrearProducto">
+        <i class="bi bi-plus-lg"></i> Nuevo producto
+    </button>
+</div>
+
+<div class="card shadow-sm">
+    <div class="card-body">
+        <table id="tblProductos" class="table table-striped table-hover w-100">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Nombre</th>
+                    <th>Categoría</th>
+                    <th class="text-end">Precio</th>
+                    <th class="text-end">Stock</th>
+                    <th class="text-center">Acciones</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+</div>
+
+@await Html.PartialAsync("_Crear", new ProductoDto())
+@await Html.PartialAsync("_Editar", new ProductoDto())
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script src="~/js/producto.js" asp-append-version="true"></script>
+}

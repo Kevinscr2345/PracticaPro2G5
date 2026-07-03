@@ -1,0 +1,58 @@
+@model ProductoDto
+@{
+    var categorias = ViewBag.Categorias as IEnumerable<CategoriaDto> ?? new List<CategoriaDto>();
+}
+
+<div class="modal fade" id="modalEditarProducto" tabindex="-1" aria-labelledby="tituloEditarProducto" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form id="formEditarProducto">
+                @Html.AntiForgeryToken()
+                <input type="hidden" asp-for="Id" id="editarProductoId" />
+                <div class="modal-header">
+                    <h5 class="modal-title" id="tituloEditarProducto">Editar producto</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label asp-for="Nombre" class="form-label"></label>
+                        <input asp-for="Nombre" id="editarProductoNombre" class="form-control" />
+                        <span asp-validation-for="Nombre" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="Descripcion" class="form-label"></label>
+                        <textarea asp-for="Descripcion" id="editarProductoDescripcion" class="form-control" rows="2"></textarea>
+                        <span asp-validation-for="Descripcion" class="text-danger"></span>
+                    </div>
+                    <div class="row">
+                        <div class="col-6 mb-3">
+                            <label asp-for="Precio" class="form-label"></label>
+                            <input asp-for="Precio" id="editarProductoPrecio" type="number" step="0.01" min="0" class="form-control" />
+                            <span asp-validation-for="Precio" class="text-danger"></span>
+                        </div>
+                        <div class="col-6 mb-3">
+                            <label asp-for="Stock" class="form-label"></label>
+                            <input asp-for="Stock" id="editarProductoStock" type="number" min="0" class="form-control" />
+                            <span asp-validation-for="Stock" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="FkCategoria" class="form-label">Categoría</label>
+                        <select asp-for="FkCategoria" id="editarProductoFkCategoria" class="form-select">
+                            <option value="">-- Seleccione una categoría --</option>
+                            @foreach (var categoria in categorias)
+                            {
+                                <option value="@categoria.Id">@categoria.Nombre</option>
+                            }
+                        </select>
+                        <span asp-validation-for="FkCategoria" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Actualizar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
